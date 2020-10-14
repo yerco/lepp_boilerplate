@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+    application:
+        build:
+            context: ./application
+            dockerfile: Dockerfile
+        volumes:
+            - ./application:/var/www/html/application:cached
+
+    nginx:
+        build: ./nginx
+        ports:
+            - 9980:80
+        depends_on:
+            - application
+        links:
+            - application
+
+    db:
+        build: ./db
+        restart: always
+        environment:
+            POSTGRES_USER: example
+            POSTGRES_PASSWORD: example
+            POSTGRES_DB: example
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d
