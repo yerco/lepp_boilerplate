@@ -1,6 +1,7 @@
 # README.md
 
-Boilerplate template to develop apps.
+KISS: basic LEPP boilerplate template to render an *initial* index.php
+nginx, postgresql, php
 
 ## Checking/Running
 
